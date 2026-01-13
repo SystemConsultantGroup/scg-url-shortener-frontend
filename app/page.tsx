@@ -14,7 +14,7 @@ export default function Home() {
         {/* Navigation */}
         <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-8 py-6 mix-blend-difference">
           <Link href="/" className="z-50 text-2xl font-bold tracking-tighter text-white">
-            SCG
+            LinkSnap.
           </Link>
           <div className="hidden gap-2 md:flex">
             <Link href="/auth">
