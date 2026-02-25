@@ -25,7 +25,7 @@ export default function AuthPage() {
                     variant="primary"
                     className="w-full bg-white text-black shadow-lg hover:bg-zinc-50"
                     onClick={() => {
-                        window.location.href = `${process.env.NEXT_PUBLIC_API_DOMAIN || 'https://app.scg.io'}/api/v1/auth/google`;
+                        window.location.href = `${process.env.NEXT_PUBLIC_API_DOMAIN || 'https://shortener-qa.scg.skku.ac.kr'}/api/v1/auth/google`;
                     }}
                 >
                     <span className="flex items-center gap-3">
