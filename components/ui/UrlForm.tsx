@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import AnimatedInput from "@/app/components/ui/AnimatedInput";
-import MagneticButton from "@/app/components/ui/MagneticButton";
-import { Link, CheckCircle, Copy, ArrowRight } from "@phosphor-icons/react";
+import AnimatedInput from "@/components/ui/AnimatedInput";
+import MagneticButton from "@/components/ui/MagneticButton";
 import { api } from "@/lib/api";
+import { ArrowRight, CheckCircle, Copy, Link } from "@phosphor-icons/react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface UrlFormProps {
   onSubmit?: (slug: string, targetUrl: string) => void;
@@ -88,7 +88,7 @@ export default function UrlForm({ onSubmit }: UrlFormProps) {
           }}
           onBlur={(e) => validateSlug(e.target.value)}
           icon={<Link className="h-5 w-5" />}
-          prefix="scg.io/"
+          prefix="scg.sh/"
           error={slugError}
           maxLength={50}
         />
