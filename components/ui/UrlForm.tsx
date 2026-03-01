@@ -108,7 +108,8 @@ export default function UrlForm({ onSubmit }: UrlFormProps) {
 
         <div className="pt-4">
           <MagneticButton
-            onClick={() => handleSubmit} // MagneticButton handles the click
+            type="submit"
+            disabled={isSubmitting}
             className="w-full bg-foreground text-background"
           >
             {isSubmitting ? (

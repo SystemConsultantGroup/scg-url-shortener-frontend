@@ -304,7 +304,11 @@ export default function DashboardPage() {
             icon={<LinkIcon className="h-5 w-5" />}
           />
           <div className="flex justify-end pt-4">
-            <MagneticButton className="w-full bg-foreground text-background">
+            <MagneticButton
+              type="submit"
+              disabled={isProcessing}
+              className="w-full bg-foreground text-background"
+            >
               {isProcessing ? "Saving..." : "Save Changes"}
             </MagneticButton>
           </div>
