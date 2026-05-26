@@ -28,7 +28,7 @@ export default function AnalyticsPage() {
     const fetchAnalytics = async () => {
       try {
         const result = await api.get<AnalyticsData>(
-          `/api/v1/urls/${slug}/analytics`,
+          `/urls/${slug}/analytics`,
         );
         setData(result);
       } catch (error) {

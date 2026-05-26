@@ -58,7 +58,7 @@ export default function UrlForm({ onSubmit }: UrlFormProps) {
     setIsSubmitting(true);
 
     try {
-      await api.post("/api/v1/urls", { targetUrl, slug });
+      await api.post("/urls", { targetUrl, slug });
       setIsSubmitting(false);
       setShowSuccess(true);
       onSubmit?.(slug, targetUrl);

@@ -15,7 +15,7 @@ const mockUrls = Array.from({ length: 50 }, (_, i) => ({
 
 export const handlers = [
   // Google OAuth Login
-  http.get(`${API_DOMAIN}/api/v1/auth/google`, () => {
+  http.get(`${API_DOMAIN}/auth/google`, () => {
     return HttpResponse.json(
       {
         user: {
@@ -32,7 +32,7 @@ export const handlers = [
   }),
 
   // Get User Info
-  http.get(`${API_DOMAIN}/api/v1/user`, () => {
+  http.get(`${API_DOMAIN}/user`, () => {
     return HttpResponse.json({
       user: {
         email: "user@g.skku.edu",
@@ -42,7 +42,7 @@ export const handlers = [
   }),
 
   // Create Short URL
-  http.post(`${API_DOMAIN}/api/v1/urls`, async ({ request }) => {
+  http.post(`${API_DOMAIN}/urls`, async ({ request }) => {
     const { slug, targetUrl } = (await request.json()) as {
       targetUrl: string;
       slug: string;
@@ -59,7 +59,7 @@ export const handlers = [
   }),
 
   // Get My URL List
-  http.get(`${API_DOMAIN}/api/v1/urls`, ({ request }) => {
+  http.get(`${API_DOMAIN}/urls`, ({ request }) => {
     const url = new URL(request.url);
     const page = Number(url.searchParams.get("page") || "1");
     const limit = Number(url.searchParams.get("limit") || "5");
@@ -109,7 +109,7 @@ export const handlers = [
 
   // Update URL
   http.patch(
-    `${API_DOMAIN}/api/v1/urls/:urlId`,
+    `${API_DOMAIN}/urls/:urlId`,
     async ({ params, request }) => {
       const { urlId } = params;
       const { slug, targetUrl } = (await request.json()) as {
@@ -132,7 +132,7 @@ export const handlers = [
   ),
 
   // Delete URL
-  http.delete(`${API_DOMAIN}/api/v1/urls/:urlId`, ({ params }) => {
+  http.delete(`${API_DOMAIN}/urls/:urlId`, ({ params }) => {
     const { urlId } = params;
     const index = mockUrls.findIndex((u) => u.urlId === Number(urlId));
     if (index !== -1) {
@@ -142,7 +142,7 @@ export const handlers = [
   }),
 
   // Get Statistics
-  http.get(`${API_DOMAIN}/api/v1/urls/:slug/analytics`, () => {
+  http.get(`${API_DOMAIN}/urls/:slug/analytics`, () => {
     // Generate realistic daily stats for the last 365 days (1 year)
     const dailyStats = Array.from({ length: 365 }, (_, i) => {
       const date = new Date();

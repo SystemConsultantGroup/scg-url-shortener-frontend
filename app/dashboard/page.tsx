@@ -61,7 +61,7 @@ export default function DashboardPage() {
     try {
       setIsLoading(true);
       const [userData, linksResponse] = await Promise.all([
-        api.get<{ user: UserData }>("/api/v1/user"),
+        api.get<{ user: UserData }>("/user"),
         api.get<{
           data: LinkData[];
           meta: {
@@ -70,7 +70,7 @@ export default function DashboardPage() {
             limit: number;
             totalPages: number;
           };
-        }>(`/api/v1/urls?page=${page}&limit=5&sort=${sort}`),
+        }>(`/urls?page=${page}&limit=5&sort=${sort}`),
       ]);
       setUser(userData.user);
       setLinks(linksResponse.data);
@@ -98,7 +98,7 @@ export default function DashboardPage() {
     if (!editingLink) return;
     setIsProcessing(true);
     try {
-      await api.patch(`/api/v1/urls/${editingLink.urlId}`, {
+      await api.patch(`/urls/${editingLink.urlId}`, {
         slug: newSlug,
         targetUrl: newTargetUrl,
       });
@@ -115,7 +115,7 @@ export default function DashboardPage() {
     if (!deletingLink) return;
     setIsProcessing(true);
     try {
-      await api.delete(`/api/v1/urls/${deletingLink.urlId}`);
+      await api.delete(`/urls/${deletingLink.urlId}`);
       await fetchData();
       setDeletingLink(null);
     } catch (error) {
