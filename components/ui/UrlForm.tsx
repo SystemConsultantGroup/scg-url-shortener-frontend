@@ -58,7 +58,7 @@ export default function UrlForm({ onSubmit }: UrlFormProps) {
     setIsSubmitting(true);
 
     try {
-      await api.post("/api/v1/urls", { targetUrl, slug });
+      await api.post("/urls", { targetUrl, slug });
       setIsSubmitting(false);
       setShowSuccess(true);
       onSubmit?.(slug, targetUrl);
@@ -108,7 +108,8 @@ export default function UrlForm({ onSubmit }: UrlFormProps) {
 
         <div className="pt-4">
           <MagneticButton
-            onClick={() => handleSubmit} // MagneticButton handles the click
+            type="submit"
+            disabled={isSubmitting}
             className="w-full bg-foreground text-background"
           >
             {isSubmitting ? (
